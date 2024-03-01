@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 400px;
+            border: 2px solid black;
+            margin: 50px auto;
+        }
+        .box>span{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            border-bottom: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+<script>
+    let _box = document.querySelector('.box')
+    let _span = document.querySelectorAll('span')
+    _box.addEventListener('mouseenter',()=>{
+        _span[0].innerText = "Mouse Enter"
+    })
+    _box.addEventListener('mouseleave',()=>{
+        _span[1].innerText = "Mouse leave"
+    })
+    _box.addEventListener('mouseover',()=>{
+        _span[2].innerText = "Mouse Over"
+    })
+    _box.addEventListener('mouseout',()=>{
+        _span[3].innerText = "Mouse Out"
+    })
+    _box.addEventListener('mousedown',()=>{
+        _span[4].innerText = "Mouse Down"
+    })
+    _box.addEventListener('mouseup',()=>{
+        _span[5].innerText = "Mouse Up"
+    })
+    _box.addEventListener('mousewheel',()=>{
+        _span[6].innerText = "Mouse Wheel"
+    })
+    _box.addEventListener('contextmenu',()=>{
+        _span[7].innerText = "contextmenu"
+    })
+    _box.addEventListener('mousemove',()=>{
+        _span[8].innerText = "Mouse Move"
+    })
+</script>
+</html>

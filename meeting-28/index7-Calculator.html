@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="num1" type="text" placeholder="num1">
+    <button onclick="_op('+')">+</button>
+    <button onclick="_op('-')">-</button>
+    <button onclick="_op('*')">*</button>
+    <button onclick="_op('/')">/</button>
+    <button onclick="_op('C')">C</button>
+    <input id="num2" type="text" placeholder="num2">
+    <button onclick="_sum()">=</button>
+    <span id="sum"></span>
+</body>
+<script>
+    let sum = 0
+    function _op(op){
+       _reset()
+        let flag=0
+        let num1 = Number(document.getElementById('num1').value)
+        let num2 = Number(document.getElementById('num2').value)
+        if(num1=='' || num1==null){
+            document.getElementById('num1').style.border= "1px solid red"
+        }
+        else{
+            document.getElementById('num1').style.border= "1px solid green"
+            flag++
+        }
+        if(num2=='' || num2==null){
+            document.getElementById('num2').style.border= "1px solid red"
+        }
+        else{
+            document.getElementById('num2').style.border= "1px solid green"
+            flag++
+        }
+
+   
+        if(flag == 2){
+            switch (op) {
+                case "+":
+                    sum = num1 + num2
+                    break;
+                case "-":
+                    sum = num1 - num2
+                    break;
+                case "*":
+                    sum = num1 * num2
+                    break;
+                case "/":
+                    sum = num1 / num2
+                    break;
+                case "C":
+                    _clear()
+                    break;
+            }
+        }
+        
+        
+    }
+    function _reset(){
+        document.getElementById('num1').style.border= "1px solid black"
+        document.getElementById('num2').style.border= "1px solid black"
+    }
+    function _sum(){
+        document.getElementById('sum').innerText = sum
+    }
+    function _clear(){
+        document.getElementById('num1').value =''
+        document.getElementById('num2').value =''
+        document.getElementById('sum').innerText =''
+    }
+</script>
+</html>

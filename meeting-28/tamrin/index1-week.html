@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="_week()">click</button>
+</body>
+<script>
+    let flag = ""
+    function _week(){
+        let x = new Date()
+        let y = Number(x.getDay('fa'))
+        switch (y) {
+            case 0:
+                flag='Sunday'
+                break;
+            case 1:
+                flag='Monday'
+                break;
+            case 2:
+                flag='Tuesday'
+                break;
+            case 3:
+                flag='Wednesday'
+                break;
+            case 4:
+                flag='Thursday'
+                break;
+            case 5:
+                flag='Friday'
+                break;
+            case 6:
+                flag='Saturday'
+                break;
+        
+            default:
+                flag = 'Error'
+                break;
+        }
+        alert("today is " + flag)
+    }
+</script>
+</html>

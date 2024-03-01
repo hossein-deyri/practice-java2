@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .accordion {
+            width: 50%;
+            margin: 20px auto;
+            
+        }
+
+        .accordion>li {
+            width: 100%;
+            list-style-type: none;
+            border-top: 1px solid rgba(241, 80, 80, 0.664);
+           
+        }
+
+        .row {
+            width: 100%;
+            display: flex;
+            background-color: rgb(190, 185, 185);
+        }
+
+        .row>h1 {
+            width: 90%;
+            padding-left: 15px;
+        }
+
+        .row>span {
+            width: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p { 
+            transition: 1s;
+            overflow: hidden;
+            background-color: rgba(228, 226, 226, 0.555) ;
+        }
+
+
+        .rot {
+           transform:  rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="accordion">
+        <li>
+            <div class="row" onclick="toggle(this)" data-num="0">
+                <h1>Title</h1>
+                <span>🔻</span>
+            </div>
+            <p data-status="off">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat facere possimus aspernatur repellendus
+                veritatis, atque cumque maiores velit voluptatem inventore laudantium, eligendi, quos quo totam laborum
+                excepturi quisquam iste illum expedita et tempora eveniet a voluptates! Repudiandae adipisci iusto eos.
+            </p>
+        </li>
+        <li>
+            <div class="row" onclick="toggle(this)" data-num="1">
+                <h1>Title</h1>
+                <span>🔻</span>
+            </div>
+            <p data-status="off">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat facere possimus aspernatur repellendus
+                veritatis, atque cumque maiores velit voluptatem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa amet temporibus ipsam minima itaque suscipit unde in similique perspiciatis excepturi? Maxime eius laboriosam numquam reprehenderit odio consequuntur qui nesciunt provident. inventore laudantium, eligendi, quos quo totam laborum
+                excepturi quisquam iste illum expedita et tempora eveniet a voluptates! Repudiandae adipisci iusto eos.
+            </p>
+        </li>
+        <li>
+            <div class="row" onclick="toggle(this)" data-num="2">
+                <h1>Title</h1>
+                <span>🔻</span>
+            </div>
+            <p data-status="off">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat facere possimus aspernatur repellendus
+                veritatis, atque cumque maiores velit voluptatem inventore laudantium, eligendi, quos quo totam laborum
+                excepturi quisquam iste illum expedita et tempora eveniet a voluptates! Repudiandae adipisci iusto eos.
+            </p>
+        </li>
+    </ul>
+
+  
+
+</body>
+<script>
+    let row = document.querySelectorAll('.row')
+    for(let i = 0; i<row.length; i++){
+        let temp = row[i].nextElementSibling.clientHeight
+        row[i].nextElementSibling.setAttribute('data-height',temp)
+        row[i].nextElementSibling.style.height='0'
+    }
+
+    function toggle(s){
+        let _h = s.nextElementSibling.getAttribute('data-height')
+        let _status = s.nextElementSibling.getAttribute('data-status')
+        
+        if(_status == "off"){
+            s.nextElementSibling.style.height = _h+'px'
+            s.nextElementSibling.setAttribute('data-status',"on")
+        }
+        else{
+            s.nextElementSibling.style.height = '0px'
+            s.nextElementSibling.setAttribute('data-status','off')
+        }
+        _reset(s)
+
+     
+    }
+    // function _reset(s){
+    //     let num = s.getAttribute('data-num')
+    //     for( let i = 0; i<row.length; i++){
+    //         if(i != num){
+    //             row[i].nextElementSibling.style.height = '0px'
+    //             row[i].nextElementSibling.setAttribute('data-status','off')
+    //         }
+    //     }
+    // }
+</script>
+
+</html>

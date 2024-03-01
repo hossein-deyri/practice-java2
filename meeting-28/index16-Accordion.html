@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;margin: 0;box-sizing: border-box;
+        }
+        .accordion{
+            width: 50%;
+            margin: 20px auto;
+            border: 1px solid red;
+        }
+        .accordion>li{
+            width: 100%;
+            list-style-type: none;
+
+        }
+        .row{
+            width: 100%;
+            display: flex;
+            background-color: rgb(190, 185, 185);
+        }
+        .row>h1{
+            width: 90%;
+            padding-left: 15px;
+        }
+        .row>span{
+            width: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        p{
+            padding: 10px;  
+            display: none;
+            transition: 1s;
+           
+        }
+        .df{
+            display: flex;
+            transition: 1s;
+        }
+        .rot{
+             rotate:180deg;
+        }
+    </style>
+</head>
+<body>
+    <ul class="accordion">
+        <li>
+            <div class="row" onclick="toggle(this)">
+                <h1>Title</h1>
+                <span>🔻</span>
+            </div>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat facere possimus aspernatur repellendus veritatis, atque cumque maiores velit voluptatem inventore laudantium, eligendi, quos quo totam laborum excepturi quisquam iste illum expedita et tempora eveniet a voluptates! Repudiandae adipisci iusto eos.</p>
+        </li>
+    </ul>
+  
+</body>
+<script>
+    function toggle(s){
+           console.log(s.nextElementSibling);
+           s.nextElementSibling.classList.toggle('df')
+           let _child = s.children
+           _child[1].classList.toggle('rot')
+       }
+</script>
+</html>

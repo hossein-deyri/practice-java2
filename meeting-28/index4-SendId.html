@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="test" onclick="send(this)">Hossein</h1>
+</body>
+<script>
+   function send(s){
+    let _id = s.getAttribute('id')
+    console.log(_id);
+    s.removeAttribute('id')
+    s.classList.add('test')
+   } 
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="row">
+        <input type="text">
+        <input type="text">
+    </div>
+    <button>Calculator Date</button>
+</body>
+<script>
+    const arry = []
+    let sum = 0
+    let _input = document.querySelectorAll('div>input')
+    document.getElementsByTagName('button')[0].addEventListener('click', () => {
+        _input.forEach((item, i) => {
+            arry[i] = item.value
+            console.log(arry[i]);
+        })
+        let x = new Date()
+        sum = Number(((arry[0] - (x.getFullYear())) * 365)) + Number((arry[1] * 30))
+        console.log('Days is : ' + sum);
+        console.log('Hourse is : ' + (sum * 24));
+        console.log('Minutes is : ' + ((sum * 24) * 60));
+
+    })
+
+
+</script>
+
+</html>

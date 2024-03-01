@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+        }
+        main{
+            width: 100%;
+            height: 200vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: none;
+        }
+        h1{
+            font-size: 5rem;
+            color: white;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: uppercase;
+        }
+        .circle{
+            width: 50px;
+            height: 50px;
+            border: 1px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0;
+            /* transform: translate(-50%, -50%); */
+         }
+        .circle>span{
+            display: flex;
+            width: 4px;height: 4px;
+            border-radius: inherit;
+            background-color: wheat;
+            transform: translate(-50%, -50%);
+        }
+        #rightClick{
+            width: 250px;
+            background-color: white;
+            position: fixed;
+            display: none;
+            flex-wrap: wrap;
+        }
+        li{
+            list-style-type: none;
+            text-transform: uppercase;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            border-bottom: 1px solid gray;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <ul id="rightClick">
+            <li>message</li>
+            <li>gallery</li>
+            <li>parsa</li>
+            <li>copy</li>
+        </ul>
+        <div class="circle">
+            <span></span>
+        </div>
+        <h1>customize click right</h1>
+    </main>
+</body>
+<script>
+    let x = 0
+    let y = 0
+    let c = document.getElementsByClassName('circle')[0]
+    document.getElementsByTagName('main')[0].addEventListener('mousemove', (e)=>{
+        x = e.clientX
+        y = e.clientY
+        c.style.opacity='1'
+        c.style.top=y+'px'
+        c.style.left=x+'px'
+    })
+    document.getElementsByTagName('main')[0].addEventListener('mouseout', (e)=>{
+        c.style.opacity='0'
+    })
+    document.getElementsByTagName('main')[0].addEventListener('mousedown', (e)=>{
+        c.style.transition='0.4s'
+        c.style.width='25px'
+        c.style.height='25px'
+        document.querySelector('.circle>span').style.transform='scale(2)'
+    })
+    document.getElementsByTagName('main')[0].addEventListener('mouseup', (e)=>{
+        setTimeout(() => {
+            c.style.transition='0s'
+        }, 400);
+        c.style.width='50px'
+        c.style.height='50px'
+        document.querySelector('.circle>span').style.transform='scale(1)'
+    })
+
+    let right = document.getElementById('rightClick')
+    document.getElementsByTagName('main')[0].addEventListener('contextmenu', (e)=>{
+        e.preventDefault()
+        console.log(x);
+        console.log(y);
+        right.style.display='flex'
+        right.style.top=y+'px'
+        right.style.left=x+'px'
+    })
+    document.getElementsByTagName('main')[0].addEventListener('click', (e)=>{
+        right.style.display='none'
+    })
+</script>
+</html>

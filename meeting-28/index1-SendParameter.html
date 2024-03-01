@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="func1()">
+    <h1 id="text"></h1>
+</body>
+<script>
+    function func1(){
+        let x = prompt('Enter your Age?')
+        func2(x)
+    }
+    function func2(x){
+        document.getElementById('text').innerText=' your age ix '+x+''
+    }
+</script>
+</html>

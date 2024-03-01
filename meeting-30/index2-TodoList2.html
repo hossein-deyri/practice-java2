@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../BootStrap/bootstrap.min.css">
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+           
+        }
+        #notes{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            
+        }
+    </style>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>0 Notes</h1>
+            <input type="text">
+            <button class="display-4">+</button>
+            <section class="col-12 border" id="notes"></section>
+        </div>
+    </div>
+</body>
+<script>
+    let counter = 0
+    document.getElementsByTagName('button')[0].addEventListener('click',()=>{
+      let _input = document.getElementsByTagName('input')[0]
+      if((_input.value) != ''){
+        let _div = document.createElement('div')
+        _div.innerHTML = `
+            <h2>${_input.value}</h2>
+            <span>Edit</span>
+            <span class="del px-1 bg-dark text-white">X</span>
+        `
+        _div.classList.add('box', 'm-3')
+        document.getElementById('notes').appendChild(_div)
+        _input.value = null
+        _input.focus()
+        counter++
+        let _del = document.querySelectorAll('.del')
+        _del.forEach((val)=>{
+            val.addEventListener('click',()=>{
+                console.log(val);
+                val.parentElement.remove()
+            })
+        })
+        _printNote()
+      }
+      else{
+        alert('Pleas Enter Text...')
+      }
+
+    })
+
+ 
+    function _printNote(){
+        document.getElementsByTagName('h1')[0].innerHTML = counter + "notes add!"
+
+    }
+    
+</script>
+</html>

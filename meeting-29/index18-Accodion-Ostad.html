@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .acc {
+            width: 50%;
+            margin: 100px auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        li {
+            list-style-type: none;
+            width: 100%;
+        }
+
+        .row {
+            display: flex;
+            cursor: pointer;
+            border-bottom: 1px solid gray;
+        }
+
+        .row>h2 {
+            width: 90%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            background-color: rgb(160, 157, 157);
+            padding-left: 10px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        }
+
+        .row>span {
+            display: flex;
+            width: 10%;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            transition: .4s;
+        }
+
+        p {
+            padding: 0 10px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-align: justify;
+            transition: 1s;
+            overflow: hidden;
+        }
+
+        .rot {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="acc">
+        <li>
+            <div class="row">
+                <h2>title</h2>
+                <span>⬆️</span>
+            </div>
+            <p data-status="off">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore corrupti quos, am et
+                quo nulla. Lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Vero quod nemo reprehenderit voluptates veritatis
+                fugiat mollitia aliquid sit alias? Laudantium dolorum nam sed illum eligendi obcaecati qui eum aut
+                molestiae. </p>
+        </li>
+        <li>
+            <div class="row">
+                <h2>title</h2>
+                <span>⬆️</span>
+            </div>
+            <p data-status="off">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore corrupti quos, cumque
+                animi alias velit
+                natus, neque nobis eos, sequi minus! Hic quis, Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Animi beatae explicabo modi non rem voluptas ab, iure sed tempore officia, quam sit ipsam! Libero
+                tempora iure voluptate debitis itaque ex? ad id dignissimos quisquam et quo nulla. Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Vero quod nemo reprehenderit voluptates veritatis fugiat mollitia
+                aliquid sit alias? Laudantium dolorum nam sed illum eligendi obcaecati qui eum aut molestiae. </p>
+        </li>
+        <li>
+            <div class="row">
+                <h2>title</h2>
+                <span>⬆️</span>
+            </div>
+            <p data-status="off">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore corrupti quos, cumque
+                animi alias velit
+                natus, neque nobis eos, sequi minus! Hic quis,ugiat mollitia aliquid sit alias? Laudantium dolorum nam
+                sed illum eligendi obcaecati qui eum aut molestiae. </p>
+        </li>
+        <li>
+            <div class="row">
+                <h2>title</h2>
+                <span>⬆️</span>
+            </div>
+            <p data-status="off">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore corrupti quos, cumque
+                animi alias velit
+                natus, neque nobis eos, sequi minus! Hic quis,ugiat mollitia aliquid sit alias? Laudantium dolorum nam
+                sed illum eligendi obcaecati qui eum aut molestiae. </p>
+        </li>
+        <li>
+            <div class="row">
+                <h2>title</h2>
+                <span>⬆️</span>
+            </div>
+            <p data-status="off">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore corrupti quos, cumque
+                animi alias velit
+                natus, neque nobis eos, sequi minus! Hic quis,ugiat mollitia aliquid sit alias? Laudantium dolorum nam
+                sed illum eligendi obcaecati qui eum aut molestiae. </p>
+        </li>
+    </ul>
+    <script>
+        let num = 0
+        let row = document.querySelectorAll('.row')
+
+        for (let i = 0; i < row.length; i++) {
+            let temp = row[i].nextElementSibling.clientHeight
+            row[i].nextElementSibling.setAttribute('data-h', temp)
+            row[i].nextElementSibling.style.height = '0'
+        }
+
+
+        row.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                console.log(index);
+                num = index
+
+
+
+                let _h = item.nextElementSibling.getAttribute('data-h')
+                let _status = item.nextElementSibling.getAttribute('data-status')
+                if (_status == 'off') {
+                    item.nextElementSibling.style.height = _h + 'px'
+                    item.nextElementSibling.setAttribute('data-status', 'on')
+                } else {
+                    item.nextElementSibling.style.height = '0px'
+                    item.nextElementSibling.setAttribute('data-status', 'off')
+                }
+                // reset***
+
+                for (let k = 0; k < row.length; k++) {
+                    if (k != num) {
+                        row[k].nextElementSibling.style.height = '0px'
+                        row[k].nextElementSibling.setAttribute('data-status', 'off')
+                    }
+                }
+
+            })
+        })
+
+
+
+
+    </script>
+</body>
+
+</html> 

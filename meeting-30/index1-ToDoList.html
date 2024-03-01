@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../BootStrap/bootstrap.min.css">
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+           
+        }
+        #notes{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            
+        }
+    </style>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>0 Notes</h1>
+            <input type="text">
+            <button class="display-4">+</button>
+            <button class="display-4">Delete</button>
+            <section class="col-12 border" id="notes"></section>
+        </div>
+    </div>
+</body>
+<script>
+    let counter = 0
+    document.getElementsByTagName('button')[0].addEventListener('click',()=>{
+      let _input = document.getElementsByTagName('input')[0]
+      if((_input.value) != ''){
+       
+        let _div = document.createElement('div')
+        _div.style.backgroundColor = `rgb(${ parseInt(Math.random()*256)},${ parseInt(Math.random()*256)},${ parseInt(Math.random()*256)})`
+        _div.innerHTML = `
+            <h2>${_input.value}</h2>
+            <span onclick="_edit(this)">Edit</span>
+            <span onclick="_del(this)" class=" px-1 bg-dark text-white">X</span>
+            <input type="checkbox">
+            
+        `
+        _div.classList.add('box', 'm-3')
+        document.getElementById('notes').appendChild(_div)
+        _input.value = null
+        _input.focus()
+        counter++
+        _printNote()
+      }
+      else{
+        alert('Pleas Enter Text...')
+      }
+
+    })
+
+    function _del(s){
+        s.parentElement.remove();
+        counter--
+        _printNote()
+    }
+    function _edit(s){
+        s.previousElementSibling.setAttribute('contenteditable', true)
+    }
+
+    function _printNote(){
+        document.getElementsByTagName('h1')[0].innerHTML = counter + "notes add!"
+
+    }
+    document.getElementsByTagName('button')[1].addEventListener('click',function(){
+        let box = document.querySelectorAll('.box')
+        box.forEach((val) =>{
+           let _child = val.children
+           if(_child[3].checked){
+            val.remove()
+            counter--
+            _printNote()
+           }
+        })
+    })
+    
+</script>
+</html>

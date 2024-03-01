@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+            box-sizing: border-box;
+        }
+        main{
+            width: 100%;
+            height: 200vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img{
+            width: 35%;
+        }
+        #num{
+            font-size: 30px;
+            color: white;
+            position: fixed;
+            top: 10px;left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <span id="num"></span>
+    <main>
+        <img src="pic/1686950060441.jfif" alt="">
+    </main>
+    <script>
+        document.getElementsByTagName('img')[0].addEventListener('mousemove', (e)=>{
+            console.log(e);
+            let x = (e.offsetX)/10
+            let w = (e.target.clientWidth)/10
+
+            let y = (e.offsetY)/10
+            let h = (e.target.clientHeight)/10
+            document.getElementById('num').innerText='x is : ' + x + " y is : " + y
+            document.getElementsByTagName('img')[0].style.transform='perspective(800px)rotateY('+(x-(w/2))+'deg)rotateX('+(y-(h/2))+'deg)'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        main {
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(44, 44, 44);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .box {
+            width: 10%;
+            height: 10%;
+            background-color: rgb(237, 66, 66);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 100;
+            transition: .2s;
+
+        }
+
+        .final {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .wall {
+            background-color: rgb(144, 143, 143);
+            width: 100px;
+            height: 300px;
+            position: absolute;
+
+
+
+        }
+    </style>
+</head>
+
+<body onkeydown="para(event)">
+    <main id="main">
+        <div class="box"></div>
+        <div class="final"></div>
+    </main>
+    <script>
+        wall(10, 70)
+        wall(10, 70)
+        let points = []
+        let walls = document.querySelectorAll('.wall')
+        let box = document.getElementsByClassName('box')[0]
+        points.push((walls[0].computedStyleMap().get('top')).value)
+        points.push((walls[0].computedStyleMap().get('left')).value)
+        points.push((walls[1].computedStyleMap().get('top')).value)
+        points.push((walls[1].computedStyleMap().get('left')).value)
+        // console.log(points);
+
+        setInterval(() => {
+           let top = (box.computedStyleMap().get('top')).value
+           let left = (box.computedStyleMap().get('left')).value
+            // console.log(top);
+            // console.log(left);
+            if ((top > points[0] && top < points[0]+40) &&
+            (left > points[1] && left < points[0]+10) ) {
+                alert('you lose')
+                box.style.top = "0px"
+                box.style.left = "0px"
+            }
+            if ((top > points[2] && top < points[2]+40) &&
+            (left > points[3] && left < points[3]+10) ) {
+                alert('you lose')
+                box.style.top = "0px"
+                box.style.left = "0px"
+            }
+            if (
+                ((top > 90) && (top < 100)) &&
+                ((left > 90) && (left < 100)) 
+            ){
+                alert("you win")
+                box.style.top='0px'
+                box.style.left='0px'
+            }
+        }, 10);
+        function wall(x, y) {
+            let temp = document.createElement('div')
+            temp.classList.add('wall')
+            temp.style.left = (parseInt(Math.random() * y) + x) + '%'
+            temp.style.top = (parseInt(Math.random() * 90)) + '%'
+            // temp.style.height = ((parseInt(Math.random() * 300)) + 100) + 'px'
+            document.getElementById('main').appendChild(temp)
+
+        }
+
+
+
+
+        function para(e) {
+            let x = e.keyCode || e.which
+
+            switch (x) {
+                case 39:
+                    _right()
+                    break;
+                case 37:
+                    _left()
+                    break;
+                case 38:
+                    _top()
+                    break;
+                case 40:
+                    _bottom()
+                    break;
+
+                // default:
+                //     alert('error')
+                //     break;
+            }
+        }
+        function _right() {
+            let temp = box.computedStyleMap().get('left')
+            temp = temp.value + 5
+            box.style.left = temp + '%'
+        }
+        function _left() {
+            let temp = box.computedStyleMap().get('left')
+            temp = temp.value - 5
+            box.style.left = temp + '%'
+        }
+        function _top() {
+            let temp = box.computedStyleMap().get('top')
+            temp = temp.value - 5
+            box.style.top = temp + '%'
+        }
+        function _bottom() {
+            let temp = box.computedStyleMap().get('top')
+            temp = temp.value + 5
+            box.style.top = temp + '%'
+        }
+    </script>
+</body>
+
+</html>

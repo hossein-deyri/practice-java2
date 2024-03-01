@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input class="input1" type="text" onclick="_check()">
+    <button onclick="_cal('+')">+</button>
+    <button onclick="_cal('-')">-</button>
+    <button onclick="_cal('*')">*</button>
+    <button onclick="_cal('/')">/</button>
+    <button onclick="_reset()">C</button>
+    <input class="input2" type="text" onclick="_check()">
+    <button onclick="_result()">=</button>
+    <h1 id="result"></h1>
+</body>
+<script>
+    let sum = 0
+    function _cal(op){
+        let num1 = Number(document.getElementsByClassName('input1')[0].value)
+        let num2 = Number(document.getElementsByClassName('input2')[0].value)
+        switch (op) {
+            case '+':
+                sum = num1 + num2
+                break;
+            case '-':
+                sum = num1 - num2
+                break;
+            case '*':
+                sum = num1 * num2
+                break;
+            case '/':
+                sum = num1 / num2
+                break;
+        
+            default:
+                alert('error')
+                break;
+        }
+        
+    }
+    function _reset(){
+        document.getElementsByClassName('input1')[0].value = ""
+        document.getElementsByClassName('input2')[0].value = ""
+        document.getElementById('result').innerText= ""
+        
+    }
+    function _result(){
+        document.getElementById('result').innerText= sum
+    }
+</script>
+</html>
